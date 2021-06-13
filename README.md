@@ -1,5 +1,11 @@
 # Spring
 
+### Spring 환경 설정
+    1. Java 11 이상
+    2. Intellij or eclips 사용하기
+    3. start.spring.io로 Spring 시작하기
+    4. 여기서 받아서 Intellij로 시작하기
+
 ### JPA & Spring boot 연동
 
     0. Back-End 개발 워크플로우
