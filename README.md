@@ -3,8 +3,11 @@
 ### Spring 환경 설정
     1. Java 11 이상
     2. Intellij or eclips 사용하기
-    3. start.spring.io로 Spring 시작하기
+    3. https://start.spring.io/ 로 Spring 시작하기
     4. 여기서 받아서 Intellij로 시작하기
+
+### Spring-web
+    - https://www.thymeleaf.org/ 참고
 
 ### JPA & Spring boot 연동
 
