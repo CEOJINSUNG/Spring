@@ -9,8 +9,9 @@
     6. ls -arlth 한다음 파일을 복사해서 실행함
     7. java -jar hello-spring-0.0.1-SNAPSHOT.jar 이름은 예시임 
 
-### Spring-web
+### Spring
     - https://www.thymeleaf.org/ 참고
+    - MVC: Model, View, Controller
 
 ### JPA & Spring boot 연동
 
