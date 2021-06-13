@@ -5,6 +5,9 @@
     2. Intellij or eclips 사용하기
     3. https://start.spring.io/ 로 Spring 시작하기
     4. 여기서 받아서 Intellij로 시작하기
+    5. ./gradlew clean build && cd build/libs
+    6. ls -arlth 한다음 파일을 복사해서 실행함
+    7. java -jar hello-spring-0.0.1-SNAPSHOT.jar 이름은 예시임 
 
 ### Spring-web
     - https://www.thymeleaf.org/ 참고
