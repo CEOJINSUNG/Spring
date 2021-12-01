@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><%@ page isELIgnored="false" %>
+<head>
 <meta charset="ISO-8859-1">
 <title>Spring 5 MVC - Hello World Example | javaguides.net</title>
 </head>

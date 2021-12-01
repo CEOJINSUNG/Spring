@@ -9,14 +9,14 @@ import org.springframework.web.servlet.view.JstlView;
 @SpringBootApplication
 public class SpringMvcHelloWorldApplication {
 
-	@Bean
-    public InternalResourceViewResolver resolver() {
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setViewClass(JstlView.class);
-        resolver.setPrefix("/WEB-INF/views/");
-        resolver.setSuffix(".jsp");
-        return resolver;
-    }
+	// @Bean
+    // public InternalResourceViewResolver resolver() {
+    //     InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+    //     resolver.setViewClass(JstlView.class);
+    //     resolver.setPrefix("/WEB-INF/views/");
+    //     resolver.setSuffix(".jsp");
+    //     return resolver;
+    // }
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringMvcHelloWorldApplication.class, args);
