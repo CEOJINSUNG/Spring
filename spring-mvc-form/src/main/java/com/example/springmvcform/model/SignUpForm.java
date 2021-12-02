@@ -2,7 +2,6 @@ package com.example.springmvcform.model;
 
 public class SignUpForm {
     private String firstName;
-    
     private String lastName;
     private String email;
     private String userName;
