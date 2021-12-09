@@ -24,4 +24,5 @@ public class User {
     private Date startDate;
     private int age;
     private int active;
+    private String emailAddress;
 }

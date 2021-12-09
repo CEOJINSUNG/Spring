@@ -8,6 +8,7 @@ import java.util.Optional;
 import com.example.springjpatutorial.model.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
@@ -34,4 +35,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByActiveFalse();
     List<User> findByFirstnameIgnoreCase(String firstname);
 
+    //주석으로 되어 있는 것은 SQL 언어로 바로 적용하고 싶을 때 사용하는 것이다. 
+    //@Query(value = "select * from users where first_name like %?1", nativeQuery = true)
+    @Query("select u from User u where u.emailAddress = ?1")
+    User findByEmailAddress(String emailAddress);
+
+    //@Query(value = "SELECT * FROM USERS WHERE EMAIL_ADDRESS = ?1", nativeQuery = true)
+    @Query("select u from User u where u.firstname like %?1")
+    List < User > findByFirstnameEndsWith(String firstname);
 }
