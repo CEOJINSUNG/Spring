@@ -1,3 +1,4 @@
 
 spring-jpa-tutorial/src/main/resources/application.yml
 spring-jpa-auditing/src/main/resources/application.yml
+spring-jpa-multiple/src/main/resources/application.yml
