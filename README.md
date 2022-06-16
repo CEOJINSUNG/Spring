@@ -75,4 +75,28 @@
         18) @ExtendWith : 확장을 선언적으로 등록할 때 사용함
         19) @RegisterExtension : 필드를 통해 프로그래밍 방식으로 확장을 등록할 때 사용함
         20) @TempDir : 필드 주입 또는 매개변수 주입을 통해 임시 디렉토리를 제공하는데 사용함
+    
+    2. JUnit4 Assertions
+        1) assertEquals : 두 값을 비교하여 일치 여부 판단
+        2) assertArrayEquals : 두 배열을 비교하여 일치 여부 판단/두 배열이 모두 Null이어도 동일한 것으로 간주함
+        3) assertNotNull & assertNull : 객체의 Null 여부 판단
+        4) assertNotSame & assertSame : 두 변수가 동일한 객체를 참조하는지 확인
+        5) assertTrue & assertFalse : 특정 조건이 true인지 false인지 판단
+        6) fail : AssertionFailedError를 발생시키는 테스트에 실패/실제 예외가 발생했는지 확인하거나, 개발 중에 테스트를 실패하게 만들고 싶을 때 사용
+        7) assertThat : 첫번째 파라미터에 비교대상 값, 두번째 파라미터에 비교 로직이 담긴 Matcher를 받음
+    
+    3. JUnit5 Assertions
+        1) assertArrayEquals : 예상 배열과 실제 배열이 동일한지 확인/배열이 같지 않으면 마지막 인자로 들어간 메시지가 출력됨
+        2) assertEquals : 두 값을 비교하여 일치 여부 판단
+        3) assertTrue & assertFalse : JUnit4와 동일하며 BooleanSupplier도 사용 가능
+        4) assertNull & assertNotNull : JUnit4와 동일하며 객체의 null 여부 확인
+        5) assertSame & assertNotSame : JUnit4와 동일하며 예상되는 값과 실제 값이 동일한 객체를 참조하는지 확인
+        6) fail : 제공된 실패 메시지와 기본 원인으로 테스트에 실패/개발이 완료되지 않은 테스트를 표시하는데 유용
+        7) assertAll : 모든 Assertion이 실행되고 실패가 함께 보고되는 그룹화된 Assertion/MultipleFailureError에 대한 메시지 문자열에 포함될 제목과 실행 가능한 스트림을 허용/실행 파일 중 하나에서 OutOfMemoryError가 발생한 경우에만 중단됨/메소드 내에서 인자로 람다식을 사용(여러 개의 람다식이 동시에 실행됨)
+        8) assertIterableEquals : 예상 반복 가능 항목과 실제 반복 가능 항목이 동일한지 확인/두 Iterable은 동일한 순서로 동일한 요소를 반환해야 함/두 Iterable이 동일한 유형일 필요는 없음/아래에서 서로 다른 유형의 두 목록이 동일한지 확인
+        9) assertLinesMatch : 예상 목록이 실제 목록과 일치하는지 확인/assertEquals, assertIterableEquals와 다름
+        10) assertNotEquals : 예상 값과 실제 값이 다름을 확인
+        11) assertThrows : 특정 예외가 발생하였는지 확인/첫 번째 인자는 확인할 예외 클래스/두 번째 인자는 테스트하려는 코드
+        12) assertTimeout & assertTimeoutPreemptively : 특정 시간 안에 실행이 끝나는지 확인/시간 내 실행이 끝나는지 여부 확인 시 - assertTimeout/지정한 시간 내 끝나지 않으면 바로 종료 - assertTimeoutPreemptively
+        
 
