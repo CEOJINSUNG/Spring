@@ -1,9 +1,15 @@
 package com.example.springsecuritylogin.service;
 
+import com.example.springsecuritylogin.model.JwtRequestDto;
 import com.example.springsecuritylogin.model.Member;
 import com.example.springsecuritylogin.model.MemberSignupRequestDto;
 import com.example.springsecuritylogin.repository.MemberRepository;
+import com.example.springsecuritylogin.security.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +22,8 @@ public class AuthService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
 
+    private final AuthenticationManager authenticationManager;
+
     public String signup(MemberSignupRequestDto request) {
         boolean existMember = memberRepository.existsById(request.getEmail());
 
@@ -27,6 +35,16 @@ public class AuthService {
 
         memberRepository.save(member);
         return member.getEmail();
+    }
+
+    public String login(JwtRequestDto request) throws Exception {
+        Authentication authentication = authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
+        );
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        UserDetailsImpl principal = (UserDetailsImpl) authentication.getPrincipal();
+        return principal.getUsername();
     }
 
 }
