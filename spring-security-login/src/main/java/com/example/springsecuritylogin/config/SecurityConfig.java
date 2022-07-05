@@ -1,15 +1,23 @@
 package com.example.springsecuritylogin.config;
 
+import com.example.springsecuritylogin.security.JwtAuthenticationFilter;
+import com.example.springsecuritylogin.security.JwtTokenProvider;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
+@RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final JwtTokenProvider jwtTokenProvider;
 
     private static final String[] AUTH_WHITELIST = {
         "/v2/api-docs",
@@ -39,7 +47,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/auth/**").permitAll()
             // ADMIN 권한이 있는 사용자만 접근이 가능
             .antMatchers("/admin").hasRole("ADMIN")
-            .anyRequest().authenticated();
+            .anyRequest().authenticated()
+            .and()
+            // 토큰 기반 인증이기 때문에 session 사용 x
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            // JwtAuthenticationFilter는 UsernamePasswordAuthenticationFilter 전에 넣음
+            .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override

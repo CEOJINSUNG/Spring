@@ -1,6 +1,7 @@
 package com.example.springsecuritylogin.controller;
 
 import com.example.springsecuritylogin.model.JwtRequestDto;
+import com.example.springsecuritylogin.model.JwtResponseDto;
 import com.example.springsecuritylogin.model.MemberSignupRequestDto;
 import com.example.springsecuritylogin.service.AuthService;
 import lombok.RequiredArgsConstructor;
@@ -23,11 +24,11 @@ public class AuthController {
     }
 
     @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String login(@RequestBody JwtRequestDto request) {
+    public JwtResponseDto login(@RequestBody JwtRequestDto request) {
         try {
             return authService.login(request);
         } catch (Exception e) {
-            return e.getMessage();
+            return new JwtResponseDto(e.getMessage());
         }
     }
 
